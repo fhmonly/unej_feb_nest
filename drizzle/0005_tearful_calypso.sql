@@ -1,0 +1,1 @@
+ALTER TABLE `accreditation` ADD `level` varchar(255) NOT NULL;

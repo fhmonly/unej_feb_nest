@@ -1,0 +1,62 @@
+{
+  "version": "7",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1773128112592,
+      "tag": "0000_bent_red_shift",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1773485157938,
+      "tag": "0001_lyrical_silvermane",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1773498710671,
+      "tag": "0002_remarkable_spyke",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1773830349430,
+      "tag": "0003_gorgeous_darkhawk",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1773971534227,
+      "tag": "0004_rare_marvex",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "5",
+      "when": 1774170790060,
+      "tag": "0005_tearful_calypso",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "5",
+      "when": 1774172453976,
+      "tag": "0006_famous_marvel_zombies",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "5",
+      "when": 1774769212769,
+      "tag": "0007_material_wallflower",
+      "breakpoints": true
+    }
+  ]
+}
