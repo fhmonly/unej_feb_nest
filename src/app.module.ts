@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+import { ThrottlerModule } from '@nestjs/throttler';
 import { AppController } from './app.controller';
 import { DatabaseModule } from './database/infrastructure/database.module';
 import { AccreditationModule } from './modules/accreditation/accreditation.module';
@@ -15,6 +16,14 @@ import { VideoGalleryModule } from './modules/video-gallery/video-gallery.module
 
 @Module({
   imports: [
+    ThrottlerModule.forRoot({
+      throttlers: [
+        {
+          ttl: 60_000,
+          limit: 100,
+        },
+      ],
+    }),
     DatabaseModule,
     AuthModule,
     NewsModule,
