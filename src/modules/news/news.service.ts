@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InferInsertModel } from 'drizzle-orm';
 import { normalizeSlug } from 'src/common/utils/slug';
 import { news } from 'src/database/schemas/news.schema';
+import { BaseCacheService } from '../../cache/base-cache.service';
 import { NewsRepository } from './news.repository';
 
 type NewsPayload = Omit<InferInsertModel<typeof news>, 'slug'> & {
@@ -10,7 +11,10 @@ type NewsPayload = Omit<InferInsertModel<typeof news>, 'slug'> & {
 
 @Injectable()
 export class NewsService {
-  constructor(private readonly newsRepository: NewsRepository) {}
+  constructor(
+    private readonly newsRepository: NewsRepository,
+    private readonly cacheService: BaseCacheService,
+  ) {}
 
   async getNews(
     page: number,
