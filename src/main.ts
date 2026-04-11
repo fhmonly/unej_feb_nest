@@ -2,13 +2,18 @@ import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
+import { LoggingInterceptor } from './interceptor/logging.interceptor';
 import { ResponseTransformInterceptor } from './interceptor/response-transform.interceptor';
-
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
+  app.enableCors();
   app.setGlobalPrefix('api');
-  app.useGlobalInterceptors(new ResponseTransformInterceptor());
+
+  app.useGlobalInterceptors(
+    new ResponseTransformInterceptor(),
+    new LoggingInterceptor(),
+  );
   app.useGlobalPipes(new ValidationPipe());
 
   const config = new DocumentBuilder()
