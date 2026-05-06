@@ -32,6 +32,6 @@ import { CacheService } from './cache.service';
       useClass: CacheInterceptor,
     },
   ],
-  exports: [RedisModule],
+  exports: [RedisModule, CacheService],
 })
 export class CacheModule {}
