@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ThrottlerModule } from '@nestjs/throttler';
 import { AppController } from './app.controller';
+import { CacheModule } from './cache/cache.module';
 import { DatabaseModule } from './database/infrastructure/database.module';
 import { AccreditationModule } from './modules/accreditation/accreditation.module';
 import { AuthModule } from './modules/auth/auth.module';
@@ -25,6 +26,7 @@ import { VideoGalleryModule } from './modules/video-gallery/video-gallery.module
       ],
     }),
     DatabaseModule,
+    CacheModule,
     AuthModule,
     NewsModule,
     PhotoGalleryModule,

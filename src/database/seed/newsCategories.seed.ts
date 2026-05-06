@@ -1,8 +1,10 @@
+import { ConfigService } from '@nestjs/config';
 import { DatabaseService } from '../infrastructure/database.service';
 import { newsCategories } from '../schemas/news.schema';
 
 (async function () {
-  const dbService = new DatabaseService();
+  const config = new ConfigService();
+  const dbService = new DatabaseService(config);
   await dbService.onModuleInit();
   const db = dbService.db;
 

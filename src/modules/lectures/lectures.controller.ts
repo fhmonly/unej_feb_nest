@@ -11,11 +11,13 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { ApiBearerAuth } from '@nestjs/swagger';
+import { Cacheable } from 'src/cache/cache.decorator';
 import { AccessGuard } from 'src/guard/access.guard';
 import { CreateLectureDto, GetLectureQueryDto } from './lectures.dto';
 import { LecturesService } from './lectures.service';
 
 @Controller('lectures')
+@Cacheable({ resource: 'lectures' })
 export class LecturesController {
   constructor(private readonly lecturesService: LecturesService) {}
 

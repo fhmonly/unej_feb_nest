@@ -1,23 +1,25 @@
 import { Injectable, OnModuleInit } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { drizzle, MySql2Database } from 'drizzle-orm/mysql2';
 import { createPool, Pool } from 'mysql2/promise';
-import { getEnv } from '../../common/utils/env';
 
 @Injectable()
 export class DatabaseService implements OnModuleInit {
   private pool!: Pool;
   private _db!: MySql2Database;
 
+  constructor(private readonly config: ConfigService) {}
+
   public get db() {
     return this._db;
   }
 
   async onModuleInit() {
-    const DB_USERNAME = getEnv('DB_USERNAME', 'root'),
-      DB_PASSWORD = getEnv('DB_PASSWORD', ''),
-      DB_HOST = getEnv('DB_HOST', 'localhost'),
-      DB_PORT = getEnv('DB_PORT', '3306'),
-      DB_DATABASE = getEnv('DB_DATABASE', 'unej_feb');
+    const DB_USERNAME = this.config.get('DB_USERNAME', 'root'),
+      DB_PASSWORD = this.config.get('DB_PASSWORD', ''),
+      DB_HOST = this.config.get('DB_HOST', 'localhost'),
+      DB_PORT = this.config.get('DB_PORT', '3306'),
+      DB_DATABASE = this.config.get('DB_DATABASE', 'unej_feb');
 
     const credential = {
       host: DB_HOST,
@@ -35,7 +37,6 @@ export class DatabaseService implements OnModuleInit {
     this._db = drizzle(this.pool);
 
     await this.pool.getConnection();
-    console.log('Database connected');
   }
 
   async close() {

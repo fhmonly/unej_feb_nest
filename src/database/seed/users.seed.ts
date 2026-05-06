@@ -1,9 +1,11 @@
+import { ConfigService } from '@nestjs/config';
 import bcrypt from 'bcrypt';
 import { DatabaseService } from '../infrastructure/database.service';
 import { users } from '../schemas/users.schema';
 
 (async function () {
-  const dbService = new DatabaseService();
+  const config = new ConfigService();
+  const dbService = new DatabaseService(config);
   await dbService.onModuleInit();
   const db = dbService.db;
 
